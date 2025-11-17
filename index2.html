@@ -1,0 +1,1570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Into New Waters - An Arcane Eats Expansion</title>
+    <style>
+        /* --- FONTS & GLOBAL STYLES --- */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400&display=swap');
+
+        :root {
+            --color-bg: #1a1a1d;
+            --color-text: #d4d4d4;
+            --color-accent: #b99d6b;
+            --color-card-bg: #2b2b30;
+            --color-card-border: #4a4a52;
+            --color-header: #ffffff;
+            --font-serif: 'Noto Serif JP', serif;
+            --font-sans: 'Noto Sans JP', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.7;
+            overflow-y: scroll;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid var(--color-card-border);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+            min-height: auto;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            color: var(--color-header);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        /* --- HEADER & INTRO --- */
+        #hero {
+            background: linear-gradient(rgba(26, 26, 29, 0.8), rgba(26, 26, 29, 1)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="wave" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse"><path d="M0,60 Q30,40 60,60 T120,60" stroke="rgba(185,157,107,0.1)" stroke-width="2" fill="none"/></pattern></defs><rect width="1200" height="600" fill="%231a1a1d"/><rect width="1200" height="600" fill="url(%23wave)"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        #hero h1 {
+            font-size: 4.5rem;
+            color: var(--color-accent);
+            letter-spacing: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        #hero h2 {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-top: 0;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            margin-bottom: 2rem;
+        }
+
+        #hero p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-top: 1rem;
+            color: var(--color-text);
+        }
+
+        /* --- TIDE PHILOSOPHY SECTION --- */
+        .tide-philosophy {
+            margin-top: 3rem;
+            width: 100%;
+        }
+
+        .philosophy-intro {
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            margin-bottom: 2rem;
+        }
+
+        .ornament {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin: 1.5rem 0;
+            letter-spacing: 8px;
+            opacity: 0.6;
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pillar {
+            padding: 2rem 1.5rem;
+            border-left: 3px solid var(--color-accent);
+            border-right: 3px solid var(--color-accent);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .pillar::before {
+            content: '';
+            position: absolute;
+            top: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #d4af80, var(--color-accent));
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .pillar:hover::before {
+            opacity: 1;
+        }
+
+        .pillar:hover {
+            border-left-color: #d4af80;
+            border-right-color: #d4af80;
+            transform: scaleY(1.05);
+        }
+
+        .pillar-character {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            color: var(--color-accent);
+            font-family: var(--font-serif);
+        }
+
+        .pillar-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #d4af80;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .pillar-desc {
+            font-size: 0.95rem;
+            color: var(--color-text);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .accent-line {
+            margin-top: 2rem;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+            opacity: 0.5;
+            max-width: 900px;
+        }
+
+        /* --- NEW MECHANIC --- */
+        .mechanic {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-card-border);
+            padding: 1.5rem 2.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .mechanic-name {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--color-accent);
+            display: inline-block;
+            margin-right: 1rem;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+            border-bottom: 1px dotted var(--color-text);
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 250px;
+            background-color: var(--color-header);
+            color: var(--color-bg);
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 150%;
+            left: 50%;
+            margin-left: -125px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+        
+        .tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--color-header) transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* --- THEMES / MENU SECTION --- */
+        #themes {
+            background-color: #202023;
+        }
+
+        .themes-menu {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 1400px;
+            margin-top: 3rem;
+        }
+
+        .theme-item {
+            flex-basis: 300px;
+            margin: 2rem;
+        }
+
+        .theme-item h3 {
+            font-size: 2.5rem;
+            color: var(--color-accent);
+            text-align: center;
+        }
+
+        .theme-item .quote {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-style: italic;
+            text-align: center;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+        }
+
+        /* --- CARD STYLES (SHARED) --- */
+        .card-container {
+            width: 300px;
+            height: 420px;
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .card-container.flip .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border: 2px solid var(--color-card-border);
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            font-family: var(--font-sans);
+        }
+        
+        .card-face-back {
+            transform: rotateY(180deg);
+        }
+
+        .card-bg-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 12px;
+            text-shadow: 0 0 4px rgba(0,0,0,0.8);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-serif);
+        }
+
+        .card-stat-bubble {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 2px solid var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .card-title {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+            text-align: center;
+            margin-top: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 4px;
+            border-radius: 5px;
+        }
+
+        .card-art {
+            flex-grow: 1;
+            margin: 10px 0;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        .card-description {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            height: 120px;
+            overflow-y: auto;
+            color: #fff;
+        }
+        
+        .card-description strong {
+            color: var(--color-accent);
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .card-rarity {
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-accent);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+        
+        .rarity-common { color: #fff; }
+        .rarity-rare { color: #5bc0de; }
+        .rarity-epic { color: #a970ed; }
+
+        /* --- CARD MENU LIST SECTION --- */
+        #card-list {
+            padding: 4rem 1rem;
+            min-height: auto;
+        }
+
+        .menu-header {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .menu-header h2 {
+            font-size: 3rem;
+            color: var(--color-accent);
+        }
+
+        /* --- DESIGNER TOGGLE --- */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+            font-family: var(--font-sans);
+        }
+        
+        .toggle-container span {
+            font-size: 1.1rem;
+            margin-right: 15px;
+            color: var(--color-accent);
+            font-weight: 300;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--color-card-border);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--color-accent);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        /* --- CARD LIST GRID --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .menu-item {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-card-border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .menu-card-image {
+            width: 100%;
+            border-radius: 15px;
+            border: 1px solid var(--color-card-border);
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+        
+        .menu-card-details h4 {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-card-stats {
+            display: flex;
+            justify-content: space-around;
+            background-color: #1a1a1d;
+            padding: 0.75rem;
+            border-radius: 5px;
+            font-family: var(--font-serif);
+            margin-bottom: 1rem;
+        }
+        
+        .menu-card-stats span {
+            font-size: 1.1rem;
+            color: var(--color-text);
+        }
+
+        .menu-card-description {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .flavor-text {
+            font-family: var(--font-serif);
+            font-style: italic;
+            color: var(--color-accent);
+            text-align: center;
+            border-top: 1px dashed var(--color-card-border);
+            padding-top: 1rem;
+            margin-top: auto;
+        }
+        
+        .designer-insight {
+            display: none;
+            background-color: #1a1a1d;
+            border: 1px dashed var(--color-accent);
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .designer-insight p {
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background-color: #111;
+            color: #888;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+        }
+.flip-menu-item {
+    perspective: 1000px;
+    height: 100%;
+}
+
+.flip-menu-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-menu-item:hover .flip-menu-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-menu-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.flip-menu-face-back {
+    transform: rotateY(180deg);
+}
+.flip-menu-item {
+    perspective: 1000px;
+    height: 100%;
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.flip-menu-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-menu-item:hover .flip-menu-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-menu-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.flip-menu-face-back {
+    transform: rotateY(180deg);
+}
+.flip-menu-item:hover .flip-menu-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-menu-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--color-card-bg);
+}
+
+.flip-menu-face-back {
+    transform: rotateY(180deg);
+}
+
+
+    </style>
+</head>
+<body>
+
+    <section id="hero" class="section">
+        <h1>INTO NEW WATERS</h1>
+        <h2>新しい海へ</h2>
+        <p>A Fanmade Arcane Eats Expansion</p>
+        <p>35 new cards. 1 new faction.</p>
+        
+        <centre><div class="tide-philosophy">
+            <centre><div class="philosophy-intro">THE TIDE</div></centre></centre>
+            <div class="ornament">〰 ◆ 〰</div>
+            
+            <div class="pillars">
+                <div class="pillar">
+                    <div class="pillar-character">荒</div>
+                    <div class="pillar-title">SEA MONSTERS</div>
+                    <div class="pillar-desc">Fresh from the sea. Colossal, cold-blooded and untamed. </div>
+                </div>
+
+                <div class="pillar">
+                    <div class="pillar-character">育</div>
+                    <div class="pillar-title">CULTIVATION</div>
+                    <div class="pillar-desc">Patience. Transformation. Growth through time.</div>
+                </div>
+
+                <div class="pillar">
+                    <div class="pillar-character">美</div>
+                    <div class="pillar-title">HONOUR</div>
+                    <div class="pillar-desc">Mitigate damage through Impressive feats.</div>
+                </div>
+            </div>
+            
+            <div class="accent-line"></div>
+        </div>
+    </section>
+
+    <section id="mechanic" class="section">
+        <h2>1 New Mechanic</h2>
+        <div class="mechanic">
+            <span class="mechanic-name">
+                <div class="tooltip">Raw
+                    <span class="tooltip-text">'A bonus when served this turn'</span>
+                </div>
+            </span>
+        </div>
+    </section>
+
+    
+    <section id="card-list">
+        <div class="menu-header">
+            <h2>The Full Menu</h2>
+            <div class="toggle-container">
+            </div>
+        </div>
+
+        <!-- HTML: Add this where you want the filter menu to appear -->
+<div class="filter-controls">
+    <span class="filter-label">Filter by Rarity:</span>
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="common">Common</button>
+    <button class="filter-btn" data-filter="rare">Rare</button>
+    <button class="filter-btn" data-filter="epic">Epic</button>
+</div>
+
+<!-- CSS: Add this to your <style> section -->
+<style>
+.filter-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.filter-label {
+    font-size: 1.1rem;
+    color: var(--color-accent);
+    font-weight: 300;
+}
+
+.filter-btn {
+    background-color: var(--color-card-bg);
+    border: 2px solid var(--color-card-border);
+    color: var(--color-text);
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.filter-btn.active {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-bg);
+    font-weight: 600;
+}
+</style>
+
+<!-- JavaScript: Add this before your closing </body> tag -->
+
+
+
+        <div class="menu-grid">
+            
+            <div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Naga Roe" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Naga Roe</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 0</span>
+                        <span>Value: 0</span>
+                        <span>Cook Time: 0</span>
+                    </div>
+                    <p class="menu-card-description"><strong>Raw:</strong> +2 value</p>
+                </div>
+                <div class="card-footer">
+    <div class="card-rarity rarity-common">Common / Seafood</div>
+</div>
+                <div class="flavor-text">[Sea serpent spawn delicacy.]</div>
+                <div class="designer-insight">
+                    <p>[ I wanted a simple, intuitive card to ease players into the 'Raw' mechanic. ]</p>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Raiju Shank" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Raiju Shank</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 0</span>
+                        <span>Value: 0</span>
+                        <span>Cook Time: 3</span>
+                    </div>
+                    <p class="menu-card-description"><strong>Energize</strong> 1</p>
+                </div>
+                <div class="card-footer">
+    <div class="card-rarity rarity-common">Common / Meat</div>
+</div>
+                <div class="flavor-text">[Flashes of power, like lightning trapped in ligaments. ]</div>
+                <div class="designer-insight">
+                    <p>[We've seen Energize cards priced into the game as one-time use or with curses. I tried to find alternative ways to price them here, ie. with long cook times. Energy is an imoprtant resource for the Tide's monster summoning theme. ]</p>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Muscle Mussel" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Muscle Mussel</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 3</span>
+                        <span>Cook Time: 2</span>
+                    </div>
+                    <p class="menu-card-description">2 <strong>Tough.</strong> Draw 1</p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-common">Common / Seafood</div>
+</div>
+                <div class="flavor-text">[ Hard shell protects pearl meat underneath. ]</div>
+                <div class="designer-insight">
+                    <p>[ Designer insight for Muscle Mussel goes here. ]</p>
+                </div>
+            </div>
+
+           <div class="menu-item flip-menu-item">
+    <div class="flip-menu-inner">
+        <!-- FRONT -->
+        <div class="flip-menu-face">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Kaiju Tail" class="menu-card-image">
+            <div class="menu-card-details">
+                <h4>Sticky Rice</h4>
+                <div class="menu-card-stats">
+                    <span>Energy: 1</span>
+                    <span>Value: 2</span>
+                    <span>Cook Time: 1</span>
+                </div>
+                <p class="menu-card-description"><strong>Persistent.</strong> Merges with adjacent Sticky Rice in hand.</p>
+            </div>
+            <div class="card-footer">
+                <div class="card-rarity rarity-common">Common / Starch</div>
+            </div>
+            <div class="flavor-text">[Soul of a nation.]</div>
+            <div class="designer-insight">
+                <p>[]</p>
+            </div>
+        </div>
+
+        <!-- BACK -->
+        <div class="flip-menu-face flip-menu-face-back">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Complete Kaiju" class="menu-card-image">
+            <div class="menu-card-details">
+                <h4>Sticky Rice Ball</h4>
+                <div class="menu-card-stats">
+                    <span>Energy: 1</span>
+                    <span>Value: 2</span>
+                    <span>Cook Time: 1</span>
+                </div>
+                <p class="menu-card-description">Has <strong>+1 Stack </strong> for each Sticky Rice inside.</p>
+            </div>
+            <div class="card-footer">
+                <div class="card-rarity rarity-common">Epic / Seafood</div>
+            </div>
+            <div class="flavor-text">[Stronger together.]</div>
+            <div class="designer-insight">
+                <p>[]</p>
+            </div>
+        </div>
+    </div>
+</div>
+            <div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Tengu Bird's Nest</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 2</span>
+                        <span>Cook Time: 1</span>
+                    </div>
+                    <p class="menu-card-description">If you have an <strong>Impressed customer</strong>, draw 1 and +1 energy.</p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-common">Common / Meat</div>
+</div>
+                <div class="flavor-text">[Bird warriors of the mountain that buffets strong winds with their fans.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Phantom Fish</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 2</span>
+                        <span>Cook Time: 0</span>
+                    </div>
+                    <p class="menu-card-description"><strong>Ethereal. Raw:</strong> +2 value. </p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-common">Common / Seafood</div>
+</div>
+                <div class="flavor-text">[Deep sea creatures, fleeting.]</div>
+                <div class="designer-insight">
+                    <p>[test]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Deep Oar Fish</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 3</span>
+                        <span>Cook Time: 0</span>
+                    </div>
+                    <p class="menu-card-description"><strong>Raw: Heavy.</strong><br> If cooked instead, +1 value. </p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-common">Common / Seafood</div>
+</div>
+                <div class="flavor-text">[Their flavour comes out through cooking.]</div>
+                <div class="designer-insight">
+                    <p>[Deep Oarfish is an exploration of Raw as a binary decision choice for players rather than the 'use-it-or-lose-it' maxim. By providing a value reward after cooking, it gives them more breathing room so they don't feel as bad if they lose the Raw bonus, a more tactical aspect (planning ahead of turns by using both rewards), and more opportunities for decision-making. This, I feel, is an example of how deep Raw as a mechanic can be.]</p>
+                </div>
+            </div>
+<div class="menu-item">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Kappa Cucumber" class="menu-card-image">
+    <div class="menu-card-details">
+        <h4>Kappa Cucumber</h4>
+        <div class="menu-card-stats">
+            <span>Energy: 1</span>
+            <span>Value: 3</span>
+            <span>Cook Time: 0</span>
+        </div>
+        <p class="menu-card-description"></p>
+    </div>
+    <div class="card-footer">
+        <div class="card-rarity rarity-common">Common / Vegetable</div>
+    </div>
+    <div class="flavor-text">[A river spirit's favorite meal.]</div>
+    <div class="designer-insight">
+        <p>[Ben Brode, previous lead design for Blizzard's Hearthstone, often said that card complexities and power levels existed on a spectrum. Legendary cards *feel* legendary because there are cards that suck that you can compare them to. It could just be a flimsy excuse to make pack fillers. Or an excuse for bad cards. But I think there's an element of truth to it. Intentionally-designed boring or bad cards can sometimes elevate the experience. Like an almost pause of a musical bar in an orchestra that's going full steam ahead. Won't lie to you though, was pretty uninspired when making the cucumber.]</p>
+    </div>
+</div>
+                         <div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Kami-Blessed Kelp</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 3</span>
+                        <span>Cook Time: 0</span>
+                    </div>
+                    <p class="menu-card-description"><strong>Garnish. Raw:</strong> +1 value. </p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-common">Common / Vegetable</div>
+</div>
+                <div class="flavor-text">[The girdle of mermaids.]</div>
+                <div class="designer-insight">
+                    <p>[Wow, I love butchering a mechanic by diluting it across several same-y cards. I love them. ]</p>
+                </div>
+            </div>
+                        <div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Snow Crabstick</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 2</span>
+                        <span>Cook Time: 2</span>
+                    </div>
+                    <p class="menu-card-description"><strong>3x Stack. 3x Chill.</strong> </p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-common">Common / Seafood</div>
+</div>
+                <div class="flavor-text">[A seasonal dish, found during migration season.]</div>
+                <div class="designer-insight">
+                    <p>[The core way the Tide mitigates damage isn't with Tough but by Chilled (for slower, more deliberately planned attacks) and Impress All (for more immediate ones). Here, I took the same value distribution pattern as another crab already in game, which is the Siege Crabs. While Tough is more powerful than Chilled, remember that I'm no balance expert, and numbers can be subject to change.]</p>
+                </div>
+            </div>
+                          <div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Enoki Forest</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 2</span>
+                        <span>Value: 3</span>
+                        <span>Cook Time: 1</span>
+                    </div>
+                    <p class="menu-card-description"><strong>3x Pack.</strong> </p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-common">Common / Vegetable</div>
+</div>
+                <div class="flavor-text">[Abundant and nutritious.]</div>
+                <div class="designer-insight">
+                    <p>[My girlfriend's brother's wife loves enoki mushrooms.]</p>
+                </div>
+            </div>
+              <div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Frost Scallop</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 2</span>
+                        <span>Value: 5</span>
+                        <span>Cook Time: 0</span>
+                    </div>
+                    <p class="menu-card-description"><strong>Raw: 4 Chill.</strong> </p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-common">Common / Seafood</div>
+</div>
+                <div class="flavor-text">[Tastes of the ocean essence in undistilled form.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+ <div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Giant Octopus Tako</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 2</span>
+                        <span>Value: 8</span>
+                        <span>Cook Time: 2</span>
+                    </div>
+                    <p class="menu-card-description"><strong>2x Pack. Impress All 1.</strong> </p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-common">Common / Seafood</div>
+</div>
+                <div class="flavor-text">[Rubbery and savoury.]</div>
+                <div class="designer-insight">
+                    <p>[The Tide has very few high cook time ingredients, but the sea monsters embody this. They are also the group with Impress All.]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Sacred Wasabi</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 2</span>
+                        <span>Value: 7</span>
+                        <span>Cook Time: 0</span>
+                    </div>
+                    <p class="menu-card-description"><strong>Garnish. 1 Spicy</strong> </p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-common">Common / Vegetable</div>
+</div>
+                <div class="flavor-text">[Sacred offerings for gods.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Samurai-Cut Sashimi</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 2</span>
+                        <span>Value: 5</span>
+                        <span>Cook Time: 0</span>
+                    </div>
+                    <p class="menu-card-description"><strong>Impress All 1</strong> </p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-common">Common / Seafood</div>
+</div>
+                <div class="flavor-text">[Expertly and precisely sliced.]</div>
+                <div class="designer-insight">
+                    <p>[Staple Impress All food. I designed it to be flexible, simple, and powerful.]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Heaven's Tofu</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 3</span>
+                        <span>Cook Time: 1</span>
+                    </div>
+                    <p class="menu-card-description"> <strong>2 x Chill</strong> </p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-common">Common / Dairy</div>
+</div>
+                <div class="flavor-text">[A popular and versatile favourite.]</div>
+                <div class="designer-insight">
+                    <p>[A conditional trigger to hammer in the Tide's Impress All.]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Nekomata's Tuna</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 0</span>
+                        <span>Value: 4</span>
+                        <span>Cook Time: 0</span>
+                    </div>
+                    <p class="menu-card-description">Invite a 4-Health Cat customer to a spare seat <i>(he doesn't tip).</i> </p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-rare">Rare / Seafood</div>
+</div>
+                <div class="flavor-text">[Irresistible for some spirits.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Matcha Offering</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 3</span>
+                        <span>Cook Time: 0</span>
+                    </div>
+                    <p class="menu-card-description">On play, gain <strong>Stacks</strong> to match the number of <strong>Impressed</strong> stacks. </p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-rare">Rare / Vegetable</div>
+</div>
+                <div class="flavor-text">[Brewed tea leaves.]</div>
+                <div class="designer-insight">
+                    <p>[Brewed tea leaves.]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Fortune Cracker</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 0</span>
+                        <span>Cook Time: 0</span>
+                    </div>
+                    <p class="menu-card-description" style="line-height: 1.2;">
+    ▼&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                   ▼<br>    
+    <strong>[Draw]</strong>:
+    <strong>[0]</strong><br>
+    <br>
+    <strong>[Energize]</strong>:
+    <strong>[1]</strong><br>
+    <br>
+    <strong>[Burn]</strong>:
+    <strong>[2]</strong><br>
+    ▲&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▲
+</p>
+                    <p class="menu-card-description">Spin the wheel!</p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-rare">Rare / Starch</div>
+</div>
+                <div class="flavor-text">[A game played by mischievous kitsune.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Shadow Urchin</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 2</span>
+                        <span>Value: 4</span>
+                        <span>Cook Time: 0</span>
+                    </div>
+                    <p class="menu-card-description"><strong>Raw:</strong> Leave behind a Shadow <strong>Pack</strong> with +1 cook time on the cooktop.</i> </p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-rare">Rare / Seafood</div>
+</div>
+                <div class="flavor-text">[Ninjitsu by the ronin of the sea.]</div>
+                <div class="designer-insight">
+                    <p>[When you serve the dish with the Raw bonus, you leave behind another Shadow Urchin with its stats but with 1 cook time (no infinites). This is my attempt at a deathrattle mechanic in Arcane Eats.]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Pufferfish</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 2</span>
+                        <span>Value: 9</span>
+                        <span>Cook Time: 0</span>
+                    </div>
+                    <p class="menu-card-description"><strong>Raw: Stress 2.</strong></p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-rare">Rare / Seafood</div>
+</div>
+                <div class="flavor-text">[WARNING: EXPERT CHEFS ONLY.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Earthquake Catfish</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 10</span>
+                        <span>Cook Time: 3</span>
+                    </div>
+                    <p class="menu-card-description"><strong>Heavy. Impress All 2.</strong></p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-rare">Rare / Seafood</div>
+</div>
+                <div class="flavor-text">[Omens of bad fortune.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Oni Oxtail</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 2</span>
+                        <span>Value: 12</span>
+                        <span>Cook Time: 1</span>
+                    </div>
+                    <p class="menu-card-description"><strong>Heavy.</strong> Always targets the highest-value dish.</p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-rare">Rare / Meat</div>
+</div>
+                <div class="flavor-text">[Proud, wild game.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Yin Koi</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 3</span>
+                        <span>Cook Time: 1</span>
+                    </div>
+                    <p class="menu-card-description">Has <strong>+1 Pack</strong> for every odd-value dish.</p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-rare">Rare / Seafood</div>
+</div>
+                <div class="flavor-text">[Balance.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Yang Koi</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 0</span>
+                        <span>Value: 8</span>
+                        <span>Cook Time: 4</span>
+                    </div>
+                    <p class="menu-card-description">Has -1 cook time for every even-value dish.</p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-rare">Rare / Seafood</div>
+</div>
+                <div class="flavor-text">[Harmony.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Bonsai Sakura</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 3</span>
+                        <span>Value: 4</span>
+                        <span>Cook Time: 1</span>
+                    </div>
+                    <p class="menu-card-description">Choose three times - <strong>+1 Pack; Impress All 1; or 2 Chill</strong></p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-rare">Rare / Vegetable</div>
+</div>
+                <div class="flavor-text">[Slow, deliberate methods.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Wagyu Behemoth</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 4</span>
+                        <span>Value: 11</span>
+                        <span>Cook Time: 1</span>
+                    </div>
+                    <p class="menu-card-description"><strong>3x Pack</strong></p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-epic">Epic / Meat</div>
+</div>
+                <div class="flavor-text">[That's no cow.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Kitsune Veil Veal</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 1</span>
+                        <span>Cook Time: 1</span>
+                    </div>
+                    <p class="menu-card-description">Always a copy of the last ingredient you played this turn.</p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-epic">Epic / Meat</div>
+</div>
+                <div class="flavor-text">[Illusions played by fox trickster spirits. Still tasty.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Sea Serpent Slice</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 6</span>
+                        <span>Cook Time: 2</span>
+                    </div>
+                    <p class="menu-card-description">Whenever you <strong>Impress</strong>, gain <strong>+1 Pack</strong> for the rest of the day. </p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-epic">Epic / Seafood</div>
+</div>
+                <div class="flavor-text">[A slice of something truly colossal.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+<div class="menu-item flip-menu-item">
+    <div class="flip-menu-inner">
+        <!-- FRONT -->
+        <div class="flip-menu-face">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Kaiju Tail" class="menu-card-image">
+            <div class="menu-card-details">
+                <h4>Dragon-Transforming Carp</h4>
+                <div class="menu-card-stats">
+                    <span>Energy: 1</span>
+                    <span>Value: 0</span>
+                    <span>Cook Time: 3</span>
+                </div>
+                <p class="menu-card-description"><strong>Persistent.</strong> After 3 days, transform into Dragon Scale.</p>
+            </div>
+            <div class="card-footer">
+                <div class="card-rarity rarity-epic">Epic / Seafood</div>
+            </div>
+            <div class="flavor-text">[Legends of the Dragon Gate.]</div>
+            <div class="designer-insight">
+                <p>[Legends of the Dragon Gate.]</p>
+            </div>
+        </div>
+
+        <!-- BACK -->
+        <div class="flip-menu-face flip-menu-face-back">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Complete Kaiju" class="menu-card-image">
+            <div class="menu-card-details">
+                <h4>Dragon Scale</h4>
+                <div class="menu-card-stats">
+                    <span>Energy: 1</span>
+                    <span>Value: 10</span>
+                    <span>Cook Time: 1</span>
+                </div>
+                <p class="menu-card-description">Has +2 value for each time you played a Dragon-Transforming Carp this run.</p>
+            </div>
+            <div class="card-footer">
+                <div class="card-rarity rarity-epic">Epic / Seafood</div>
+            </div>
+            <div class="flavor-text"></div>
+            <div class="designer-insight">
+                <p>[]</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>King Crab</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 3</span>
+                        <span>Value: 10</span>
+                        <span>Cook Time: 2</span>
+                    </div>
+                    <p class="menu-card-description"><strong>2 Tough. </strong> Costs (0) if you're holding only Seafood.</strong></p>
+                </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-epic">Epic / Seafood</div>
+</div>
+                <div class="flavor-text">[Undisputed flavour king of the crustaceans.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+<div class="menu-item flip-menu-item">
+    <div class="flip-menu-inner">
+        <!-- FRONT -->
+        <div class="flip-menu-face">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Kaiju Tail" class="menu-card-image">
+            <div class="menu-card-details">
+                <h4>Kaiju Head</h4>
+                <div class="menu-card-stats">
+                    <span>Energy: 3</span>
+                    <span>Value: 12</span>
+                    <span>Cook Time: 1</span>
+                </div>
+                <p class="menu-card-description"><strong>2 Tough. Impress All 2.</strong> If your deck has another Kaiju part, merge into Kaiju, Reborn.</p>
+            </div>
+            <div class="card-footer">
+                <div class="card-rarity rarity-epic">Epic / Seafood</div>
+            </div>
+            <div class="flavor-text">[Head of an ancient beast.]</div>
+            <div class="designer-insight">
+                <p>[]</p>
+            </div>
+        </div>
+
+        <!-- BACK -->
+        <div class="flip-menu-face flip-menu-face-back">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Complete Kaiju" class="menu-card-image">
+            <div class="menu-card-details">
+                <h4>Kaiju, Reborn</h4>
+                <div class="menu-card-stats">
+                    <span>Energy: 3</span>
+                    <span>Value: 12</span>
+                    <span>Cook Time: 1</span>
+                </div>
+                <p class="menu-card-description"><strong>Heavy. 2 Tough, Impress All 2 and 1x Pack </strong> per part.</p>
+            </div>
+            <div class="card-footer">
+                <div class="card-rarity rarity-epic">Epic / Seafood</div>
+            </div>
+            <div class="flavor-text">[Complete form.]</div>
+            <div class="designer-insight">
+                <p>[]</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Kaiju Belly</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 6</span>
+                        <span>Cook Time: 2</span>
+                    </div>
+                   <p class="menu-card-description"><strong>2 Tough. Impress All 2.</strong> If your deck has another Kaiju part, merge into Kaiju, Reborn.</p>
+            </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-epic">Epic / Seafood</div>
+</div>
+                <div class="flavor-text">[Belly of an ancient beast.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+<div class="menu-item">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect fill='%232b2b30' width='400' height='225'/%3E%3C/svg%3E" alt="Sticky Rice" class="menu-card-image">
+                <div class="menu-card-details">
+                    <h4>Kaiju Tail</h4>
+                    <div class="menu-card-stats">
+                        <span>Energy: 1</span>
+                        <span>Value: 6</span>
+                        <span>Cook Time: 2</span>
+                    </div>
+                   <p class="menu-card-description"><strong>2 Tough. Impress All 2.</strong> If your deck has another Kaiju part, merge into Kaiju, Reborn.</p>
+            </div>
+                  <div class="card-footer">
+    <div class="card-rarity rarity-epic">Epic / Seafood</div>
+</div>
+                <div class="flavor-text">[Tail of an ancient beast.]</div>
+                <div class="designer-insight">
+                    <p>[]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+            <script>
+// Rarity Filter Functionality
+const filterButtons = document.querySelectorAll('.filter-btn');
+const menuItems = document.querySelectorAll('.menu-item');
+
+filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const filterValue = btn.getAttribute('data-filter');
+
+        // Update active button
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Filter cards
+        menuItems.forEach(item => {
+            const rarityElement = item.querySelector('.card-rarity');
+            if (!rarityElement) return;
+
+            const rarity = rarityElement.className.match(/rarity-(\w+)/);
+            const cardRarity = rarity ? rarity[1] : '';
+
+            if (filterValue === 'all' || cardRarity === filterValue) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});
+</script>
+        </body>
